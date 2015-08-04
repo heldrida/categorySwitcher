@@ -17,3 +17,6 @@
       z-index: 1; }
     #category-switcher .container > div.layer-2 {
       z-index: 2; }
+
+#category-switcher .toggle-category {
+  margin-top: 10px; }

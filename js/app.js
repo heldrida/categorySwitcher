@@ -33,7 +33,7 @@
 			var moveWidth = targetIndex * this.sliceWidth;
 
 			window.TweenLite.to(this.layers['bottom'], 0, {
-				backgroundPosition: moveWidth + "px 0px",
+				backgroundPosition: moveWidth + "px " + this.categoryList[this.category].posY + "px",
 				onComplete: function () {
 
 					window.TweenLite.to(this.layers['top'], 1, {
@@ -42,7 +42,7 @@
 
 							window.TweenLite.to(this.layers['top'], 0, {
 								opacity: 1,
-								backgroundPosition: moveWidth + "px 0px"
+								backgroundPosition: moveWidth + "px " + this.categoryList[this.category].posY + "px"
 							});
 
 						}.bind(this)
@@ -75,6 +75,14 @@
 
 			}.bind(this));
 
+			this.btnToggleCategory.addEventListener('click', function (e) {
+
+				this.category = this.category.toLowerCase() === 'cat_a' ? 'Cat_B' : 'Cat_A';
+
+				this.infoCategory.value = this.category;
+
+			}.bind(this));
+
 		},
 
 		setVars: function () {
@@ -94,19 +102,26 @@
 			};
 
 			this.sliceWidth = 100;
+			this.sliceHeight = 330;
 
 			this.categoryList = {
 				'Cat_A': {
 					currentIndex: 0,
-					total: 6
+					total: 6,
+					posY: 0
 				},
 				'Cat_B': {
 					currentIndex: 0,
-					total: 4
+					total: 4,
+					posY: -this.sliceHeight
 				}
 			};
 
 			this.setCategory('Cat_A');
+
+			this.infoCategory = document.querySelector('.info-category');
+
+			this.btnToggleCategory = document.querySelector('button.toggle-category');
 
 		},
 
