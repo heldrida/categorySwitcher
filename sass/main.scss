@@ -1,31 +1,27 @@
-.wheel-container {
-	#wheel {
-		position: relative;
-		z-index: 1;
+#category-switcher {
+	.container {
 		width: 500px;
-		height: 500px;
-		margin: 0 auto;
-		display: block;
-		overflow: hidden;
-
-		img {
-			width: 100%; 
-		}
-	}
-
-	.nav-wheel {
+		height: 350px;
 		position: relative;
-		z-index: 2;
-		margin: 25px auto;
-		width: 50%;
-		text-align: center;
 
-		button {
-			display: inline-block;
-			background-color: #999;
-			color: #fff;
-			border: none;
-			cursor: pointer;
+		> div {
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-image: url("../img/sprite-lipstick.png?201508041332");
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			width: 100px;
+			height: 100%;
+			overflow: hidden;
+
+			&.layer-1 {
+				z-index: 1;
+			}
+
+			&.layer-2 {
+				z-index: 2;
+			}
 		}
 	}
 }
