@@ -10,9 +10,11 @@
 
 		normaliseIndex: function (index) {
 
-			console.log('index', index);
+			if (index > 0) {
 
-			if (index <= (this.total * -1)) {
+				this.currentIndex = index - this.total;
+
+			} else if (index <= (this.total * -1)) {
 
 				this.currentIndex = 0;
 
@@ -49,7 +51,7 @@
 
 			this.nav['previous'].addEventListener('click', function (e) {
 
-				this.currentIndex = this.currentIndex - 1;
+				this.currentIndex = this.currentIndex + 1;
 
 				this.normaliseIndex(this.currentIndex);
 
@@ -59,7 +61,7 @@
 
 			this.nav['next'].addEventListener('click', function (e) {
 
-				this.currentIndex = this.currentIndex + 1;
+				this.currentIndex = this.currentIndex - 1;
 
 				this.normaliseIndex(this.currentIndex);
 
