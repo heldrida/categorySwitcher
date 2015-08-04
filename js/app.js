@@ -8,6 +8,18 @@
 
 	CategorySwitcher.prototype = {
 
+		normaliseIndex: function (index) {
+
+			console.log('index', index);
+
+			if (index <= (this.total * -1)) {
+
+				this.currentIndex = 0;
+
+			}
+
+		},
+
 		showIndex: function (targetIndex) {
 
 			var moveWidth = targetIndex * this.sliceWidth;
@@ -39,6 +51,8 @@
 
 				this.currentIndex = this.currentIndex - 1;
 
+				this.normaliseIndex(this.currentIndex);
+
 				this.showIndex(this.currentIndex);
 
 			}.bind(this));
@@ -46,6 +60,8 @@
 			this.nav['next'].addEventListener('click', function (e) {
 
 				this.currentIndex = this.currentIndex + 1;
+
+				this.normaliseIndex(this.currentIndex);
 
 				this.showIndex(this.currentIndex);
 
@@ -69,7 +85,7 @@
 				'next': this.module.querySelector('button.next')
 			};
 
-			this.currentIndex = 1;
+			this.currentIndex = 0;
 
 			this.sliceWidth = 100;
 
