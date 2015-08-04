@@ -8,15 +8,21 @@
 
 	CategorySwitcher.prototype = {
 
+		setCategory: function (name) {
+
+			this.category = name;
+
+		},
+
 		normaliseIndex: function (index) {
 
 			if (index > 0) {
 
-				this.currentIndex = index - this.total;
+				this.categoryList[this.category].currentIndex = index - this.categoryList[this.category].total;
 
-			} else if (index <= (this.total * -1)) {
+			} else if (index <= (this.categoryList[this.category].total * -1)) {
 
-				this.currentIndex = 0;
+				this.categoryList[this.category].currentIndex = 0;
 
 			}
 
@@ -51,21 +57,21 @@
 
 			this.nav['previous'].addEventListener('click', function (e) {
 
-				this.currentIndex = this.currentIndex + 1;
+				this.categoryList[this.category].currentIndex = this.categoryList[this.category].currentIndex + 1;
 
-				this.normaliseIndex(this.currentIndex);
+				this.normaliseIndex(this.categoryList[this.category].currentIndex);
 
-				this.showIndex(this.currentIndex);
+				this.showIndex(this.categoryList[this.category].currentIndex);
 
 			}.bind(this));
 
 			this.nav['next'].addEventListener('click', function (e) {
 
-				this.currentIndex = this.currentIndex - 1;
+				this.categoryList[this.category].currentIndex = this.categoryList[this.category].currentIndex - 1;
 
-				this.normaliseIndex(this.currentIndex);
+				this.normaliseIndex(this.categoryList[this.category].currentIndex);
 
-				this.showIndex(this.currentIndex);
+				this.showIndex(this.categoryList[this.category].currentIndex);
 
 			}.bind(this));
 
@@ -87,11 +93,20 @@
 				'next': this.module.querySelector('button.next')
 			};
 
-			this.currentIndex = 0;
-
 			this.sliceWidth = 100;
 
-			this.total = 6;
+			this.categoryList = {
+				'Cat_A': {
+					currentIndex: 0,
+					total: 6
+				},
+				'Cat_B': {
+					currentIndex: 0,
+					total: 4
+				}
+			};
+
+			this.setCategory('Cat_A');
 
 		},
 

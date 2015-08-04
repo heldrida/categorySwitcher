@@ -1,7 +1,8 @@
 #category-switcher .container {
   width: 500px;
-  height: 350px;
-  position: relative; }
+  height: 330px;
+  position: relative;
+  margin-bottom: 30px; }
   #category-switcher .container > div {
     position: absolute;
     left: 0;
